@@ -67,6 +67,10 @@ LAlt & Tab::AltTab
 !+i::Send "^+i"         ; Open Developer Tools
 !+c::Send "^+c"         ; Inspect Element
 
+; VSCode Specific Shortcuts
+!d::Send "^d"   ; Cmd+D = Add Next Occurrence (Multi-cursor)
+!+l::Send "^+l" ; Cmd+Shift+L = Select All Occurrences
+!+r::Send "^+r" ; Cmd+Shift+R = Replace in Files
 ; Cmd+Click Functionality (Open in New Tab/Window)
 !LButton::Send "^{LButton}"  ; Cmd+Click = Ctrl+Click (Open in New Tab)
 
