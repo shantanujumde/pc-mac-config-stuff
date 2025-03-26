@@ -67,5 +67,8 @@ LAlt & Tab::AltTab
 !+i::Send "^+i"         ; Open Developer Tools
 !+c::Send "^+c"         ; Inspect Element
 
+; Cmd+Click Functionality (Open in New Tab/Window)
+!LButton::Send "^{LButton}"  ; Cmd+Click = Ctrl+Click (Open in New Tab)
+
 ; Prevent default Windows shortcuts from interfering
 #HotIf
