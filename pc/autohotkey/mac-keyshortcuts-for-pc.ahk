@@ -31,6 +31,19 @@
 !+Up::Send "^+{Home}"
 !+Down::Send "^+{End}"
 
+; Word Navigation (Option/Alt + Arrow)
+; In Windows, Ctrl+Arrow moves by word, so Win key (Mac's Option) maps to Ctrl for this
+#Left::Send "^{Left}"     ; Option+Left = Move cursor one word left
+#Right::Send "^{Right}"   ; Option+Right = Move cursor one word right
+; Word Selection (Option/Alt + Shift + Arrow)
+#+Left::Send "^+{Left}"   ; Option+Shift+Left = Select one word left
+#+Right::Send "^+{Right}" ; Option+Shift+Right = Select one word right
+
+; Delete word and line shortcuts
+#BS::Send "^{BS}"         ; Option+Backspace = Delete word to the left
+!BS::Send "^{BS}"         ; Cmd+Backspace = Delete word to the left (alternative)
+!Delete::Send "{Home}+{End}{Delete}" ; Cmd+Delete = Delete whole line
+
 ; Text Formatting
 !b::^b  ; Bold
 !i::^i  ; Italic
