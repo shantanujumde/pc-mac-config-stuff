@@ -1,5 +1,8 @@
-﻿#Requires AutoHotkey v2.0
-
+#Requires AutoHotkey v2.0
+; Key Map
+; win = options
+; ctrl = ctrl
+; alt = cmd
 ; Comprehensive Mac-like Shortcut Mapping for Windows
 
 ; Copy, Cut, Paste, Select All
@@ -86,6 +89,38 @@ LAlt & Tab::AltTab
 !+r::Send "^+r" ; Cmd+Shift+R = Replace in Files
 ; Cmd+Click Functionality (Open in New Tab/Window)
 !LButton::Send "^{LButton}"  ; Cmd+Click = Ctrl+Click (Open in New Tab)
+
+; ADDITIONAL ARROW KEY SHORTCUTS
+
+; Basic Arrow Navigation (already covered by default Windows behavior)
+; Left, Right, Up, Down arrows work the same on both Mac and Windows
+
+; Shift + Arrow Keys (Select characters)
+; These also work the same by default on both Mac and Windows
+; +Left::Send "+{Left}"    ; Shift+Left = Select one character left
+; +Right::Send "+{Right}"  ; Shift+Right = Select one character right
+; +Up::Send "+{Up}"        ; Shift+Up = Select one line up
+; +Down::Send "+{Down}"    ; Shift+Down = Select one line down
+
+; Ctrl modifier (Cmd on Mac) for paragraph navigation
+^Up::Send "{PgUp}"         ; Ctrl+Up = Page Up (similar to Mac's Cmd+Up in some contexts)
+^Down::Send "{PgDn}"       ; Ctrl+Down = Page Down (similar to Mac's Cmd+Down in some contexts)
+
+; Ctrl+Shift modifier for paragraph selection
+^+Up::Send "+{PgUp}"       ; Ctrl+Shift+Up = Select to Page Up
+^+Down::Send "+{PgDn}"     ; Ctrl+Shift+Down = Select to Page Down
+
+; Option+Shift+Up/Down (Mac) for extended line selection
+#+Up::Send "+{Up}"         ; Option+Shift+Up = Extend selection upward
+#+Down::Send "+{Down}"     ; Option+Shift+Down = Extend selection downward
+
+; Document Start/End (Mac shortcut variations)
+^Home::Send "^{Home}"      ; Ctrl+Home = Beginning of document
+^End::Send "^{End}"        ; Ctrl+End = End of document
+
+; Paragraph movement (Option+Up/Down on Mac)
+#Up::Send "^{Up}"          ; Option+Up = Move to beginning of paragraph/code block
+#Down::Send "^{Down}"      ; Option+Down = Move to end of paragraph/code block
 
 ; Prevent default Windows shortcuts from interfering
 #HotIf
