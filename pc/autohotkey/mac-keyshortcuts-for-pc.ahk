@@ -72,7 +72,7 @@
 LAlt & Tab::AltTab         ; Alt+Tab = App switcher (keep native behavior)
 
 ; Spotlight / App Search
-!Space::Send "^{Space}"    ; Cmd+Space = Windows Search (similar to Spotlight)
+!Space::Send "#s"          ; Cmd+Space = Windows Search (similar to Spotlight)
 
 ; Developer Tools
 !+i::Send "^+i"            ; Cmd+Shift+I = Open DevTools
@@ -89,8 +89,9 @@ LAlt & Tab::AltTab         ; Alt+Tab = App switcher (keep native behavior)
 ^Down::Send "{PgDn}"       ; Ctrl+Down = Page Down
 ^+Up::Send "+{PgUp}"       ; Ctrl+Shift+Up = Select Page Up
 ^+Down::Send "+{PgDn}"     ; Ctrl+Shift+Down = Select Page Down
-#+Up::Send "+{Up}"         ; Option+Shift+Up = Extend selection up
-#+Down::Send "+{Down}"     ; Option+Shift+Down = Extend selection down
+; Text selection (global)
+#+Up::Send "+{Up}"         ; Option+Shift+Up = Extend selection up (REMOVED - conflicts with VS Code)
+#+Down::Send "+{Down}"     ; Option+Shift+Down = Extend selection down (REMOVED - conflicts with VS Code)
 ^Home::Send "^{Home}"      ; Ctrl+Home = Start of document
 ^End::Send "^{End}"        ; Ctrl+End = End of document
 #Up::Send "^{Up}"          ; Option+Up = Jump paragraph up
@@ -111,20 +112,30 @@ LAlt & Tab::AltTab         ; Alt+Tab = App switcher (keep native behavior)
     return
 }
 
-+!Down::Send "+!{Down}"    ; Cmd+Shift+Down = Duplicate line down
-+!Up::Send "+!{Up}"        ; Cmd+Shift+Up = Duplicate line up
+!+Down::Send "^+d"         ; Cmd+Shift+Down = Duplicate line down
+!+Up::Send "^+d"           ; Cmd+Shift+Up = Duplicate line up (same as down in VS Code)
+
+; VS Code specific Option+Shift+Arrow for duplicating lines
+#+Down::Send "!+{Down}"    ; Option+Shift+Down = Alt+Shift+Down (native VS Code duplicate line)
+#+Up::Send "!+{Up}"        ; Option+Shift+Up = Alt+Shift+Up (native VS Code duplicate line)
+
 +!g::Send "^+g"            ; Cmd+Shift+G = Source Control
-!+a::Send "^k^c"           ; Cmd+Shift+A = Block comment
+!+a::Send "^+a"            ; Cmd+Shift+A = Toggle block comment (fixed from ^k^c)
 
 !p::Send "^p"              ; Cmd+P = Quick Open
 +!o::Send "^+o"            ; Cmd+Shift+O = Go to symbol in file
 
 !Enter::Send "{F12}"       ; Cmd+Enter = Go to Definition
-!k::Send "^!{F12}"         ; Cmd+K = Peek Definition
+!k::Send "^k ^{F12}"       ; Cmd+K = Peek Definition (fixed)
 
-!r::Send "F2"              ; Cmd+R = Rename Symbol
+!r::Send "{F2}"            ; Cmd+R = Rename Symbol
 
-!+f::Send "+!f"            ; Cmd+Shift+F = Format Document
+!+f::Send "^+f"            ; Cmd+Shift+F = Find in Files
+!+d::Send "^+d"            ; Cmd+Shift+D = Duplicate selection
+
+; Format Document
+!f::Send "^+i"             ; Cmd+F = Format Document (added)
+!+i::Send "^+i"            ; Cmd+Shift+I = Format Document
 
 !\::Send "^\\"             ; Cmd+\ = Split Editor
 !1::Send "^1"              ; Cmd+1 = Focus first editor group
