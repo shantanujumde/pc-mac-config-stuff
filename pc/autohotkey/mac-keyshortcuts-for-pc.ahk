@@ -105,28 +105,34 @@ LAlt & Tab::AltTab         ; Alt+Tab = App switcher (keep native behavior)
 !+p::Send "^+p"            ; Cmd+Shift+P = Command Palette
 !`::Send "^``"             ; Cmd+` = Toggle Terminal
 !b::Send "^b"              ; Cmd+B = Toggle sidebar
-!e::Send "^+e"             ; Cmd+E = Open Explorer
+!e::Send "^e"              ; Cmd+E = Quick Open/Find (fixed)
+!+e::Send "^+e"            ; Cmd+Shift+E = Explorer (fixed)
 
 !/:: {
     Send "^/"              ; Cmd+/ = Toggle line comment
     return
 }
 
+; Fixed duplicate line shortcuts
 !+Down::Send "^+d"         ; Cmd+Shift+Down = Duplicate line down
 !+Up::Send "^+d"           ; Cmd+Shift+Up = Duplicate line up (same as down in VS Code)
 
+; VS Code specific Option+Arrow for moving lines
+#Up::Send "!{Up}"          ; Option+Up = Move line up
+#Down::Send "!{Down}"      ; Option+Down = Move line down
+
 ; VS Code specific Option+Shift+Arrow for duplicating lines
-#+Down::Send "!+{Down}"    ; Option+Shift+Down = Alt+Shift+Down (native VS Code duplicate line)
-#+Up::Send "!+{Up}"        ; Option+Shift+Up = Alt+Shift+Up (native VS Code duplicate line)
+#+Down::Send "!+{Down}"    ; Option+Shift+Down = Duplicate line down
+#+Up::Send "!+{Up}"        ; Option+Shift+Up = Duplicate line up
 
 +!g::Send "^+g"            ; Cmd+Shift+G = Source Control
-!+a::Send "^+a"            ; Cmd+Shift+A = Toggle block comment (fixed from ^k^c)
+!+a::Send "^+a"            ; Cmd+Shift+A = Toggle block comment
 
 !p::Send "^p"              ; Cmd+P = Quick Open
 +!o::Send "^+o"            ; Cmd+Shift+O = Go to symbol in file
 
 !Enter::Send "{F12}"       ; Cmd+Enter = Go to Definition
-!k::Send "^k ^{F12}"       ; Cmd+K = Peek Definition (fixed)
+!k::Send "^k ^{F12}"       ; Cmd+K = Peek Definition
 
 !r::Send "{F2}"            ; Cmd+R = Rename Symbol
 
@@ -134,7 +140,6 @@ LAlt & Tab::AltTab         ; Alt+Tab = App switcher (keep native behavior)
 !+d::Send "^+d"            ; Cmd+Shift+D = Duplicate selection
 
 ; Format Document
-!f::Send "^+i"             ; Cmd+F = Format Document (added)
 !+i::Send "^+i"            ; Cmd+Shift+I = Format Document
 
 !\::Send "^\\"             ; Cmd+\ = Split Editor
